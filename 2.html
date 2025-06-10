@@ -1,0 +1,293 @@
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Tech Shivam - All Mod APKs</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"> 
+  <style>
+    :root {
+      --bg: #121212;
+      --text: #ffffff;
+      --accent: #00ffcc;
+      --header: #1f1f1f;
+    }
+
+    body.light {
+      --bg: #f5f5f5;
+      --text: #111;
+      --accent: #007acc;
+      --header: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--header);
+      position: relative;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hamburger {
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .hamburger span {
+      position: absolute;
+      height: 4px;
+      width: 100%;
+      background: var(--text);
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 8px;
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 8px;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      background: var(--header);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      right: 0;
+    }
+
+    nav.active {
+      display: flex;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.5rem 0;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0 2rem;
+    }
+
+ .get-started {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  background: var(--accent);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 15px var(--accent);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.get-started:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
+}
+
+    .telegram-button,
+    .theme-toggle {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    .telegram-button {
+      bottom: 20px;
+      right: 20px;
+      background: #229ED9;
+      animation: bounce 2s infinite;
+    }
+
+    .theme-toggle {
+      bottom: 20px;
+      left: 20px;
+      background: var(--accent);
+      animation: bounce 2s infinite;
+    }
+
+    .telegram-button svg,
+    .theme-toggle svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    .telegram-button:hover,
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    section#about,
+    section#contact {
+      padding: 2rem 2rem;
+      text-align: center;
+    }
+
+    section#about p,
+    section#contact p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    #contact a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: var(--accent);
+      color: black;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 15px var(--accent);
+      transition: transform 0.3s;
+    }
+
+    #contact a:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .get-started {
+        width: 100%;
+      }
+    }
+  </style> 
+ </head> 
+ <body> 
+  <header> 
+   <div class="logo">
+    Tech Shivam
+   </div> 
+   <div class="hamburger" onclick="toggleMenu(this)"> 
+    <span></span> 
+    <span></span> 
+    <span></span> 
+   </div> 
+   <nav id="navLinks"> 
+    <a href="#">Home</a> 
+    <a href="#">Categories</a> 
+    <a href="#">Tutorials</a> 
+    <a href="#contact">Contact</a> 
+   </nav> 
+  </header> 
+  <section class="hero"> 
+   <h1>Welcome to Tech Shivam</h1> 
+   <p>Explore all modded APKs from every category</p> 
+   <button class="get-started" onclick="window.location.href='apk-list.html'">Get Started</button> 
+  </section> 
+  <section id="about"> 
+   <h2>About Us</h2> 
+   <p> Tech Shivam is your ultimate destination for safe, tested, and fully-featured mod APKs. We aim to make advanced tools and enhanced app experiences easily accessible to everyone. Tutorials and step-by-step guides are also available to help you install and use the apps with confidence. </p> 
+  </section> 
+  <section id="contact"> 
+   <h2>Need Help?</h2> 
+   <p>Contact our support team directly on Telegram:</p> 
+   <a href="https://t.me/TechShivam_SupportBot" target="_blank">Contact Support</a> 
+  </section> 
+  <a href="https://t.me/+0_nx8Bw3mzQyN2I9" target="_blank" class="telegram-button" title="Join Channel"> 
+   <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 240 240">
+    <path fill="white" d="M120 0C53.73 0 0 53.73 0 120s53.73 120 120 120 120-53.73 120-120S186.27 0 120 0zm57.57 79.52-17.47 82.45c-1.32 5.9-4.83 7.37-9.79 4.59l-27.08-19.96-13.06 12.56c-1.44 1.44-2.64 2.64-5.39 2.64l1.91-27.17 49.48-44.64c2.15-1.91-.47-2.98-3.34-1.07L93.13 122.7l-26.2-8.19c-5.69-1.78-5.8-5.69 1.2-8.4l101.73-39.2c4.73-1.75 8.85 1.07 7.29 7.61z"></path>
+   </svg> </a> 
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Light/Dark Mode"> 
+   <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M21.64 13a1 1 0 0 1-1.1.68 8 8 0 0 1-9.22-9.22A1 1 0 0 1 12 3a9 9 0 1 0 9.64 10z"></path>
+   </svg> </button> 
+  <script>
+  function toggleMenu(icon) {
+    icon.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle('light');
+    localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    updateThemeIcon();
+  }
+
+  function updateThemeIcon() {
+    const icon = document.getElementById('theme-icon');
+    icon.innerHTML = document.body.classList.contains('light')
+      ? '<path d="M6.76 4.84l-1.8-1.79-1.42 1.41 1.79 1.8 1.43-1.42zm10.48 0l1.79-1.8-1.42-1.41-1.8 1.79 1.43 1.42zM12 4a1 1 0 0 1 0 2 6 6 0 1 0 6 6 1 1 0 0 1 2 0 8 8 0 1 1-8-8z"/>'
+      : '<path d="M21.64 13a1 1 0 0 1-1.1.68 8 8 0 0 1-9.22-9.22A1 1 0 0 1 12 3a9 9 0 1 0 9.64 10z"/>';
+  }
+
+  window.onload = () => {
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+    updateThemeIcon();
+  };
+</script> 
+ </body>
+</html>
